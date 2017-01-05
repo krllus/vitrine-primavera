@@ -14,7 +14,8 @@
 
     angular
     .module('vitrinePrimaveraApp', [
-        'ui.router'
+        'ui.router',
+        'companyInfo'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
@@ -28,7 +29,7 @@
         var aboutState = {
             name: 'about',
             url: '/about',
-            templateUrl: 'partial-about.html'
+            component: 'companyInfo'
         }
 
         var promoState = {
