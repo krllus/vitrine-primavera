@@ -1,0 +1,7 @@
+<h1>{{$ctrl.store.name}}</h1>
+<ul>
+    <li ng-repeat="phone in $ctrl.storePhones | orderBy: 'priority'">
+        <span>Phone: {{phone.number}}</span>
+    </li>
+</ul>
+<p>{{$ctrl.store.email}}</p>
