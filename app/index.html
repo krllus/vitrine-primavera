@@ -32,7 +32,9 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a ui-sref="promo">Promoções</a></li>
+                    <li><a ui-sref="products">Produtos</a></li>
+                    <li><a ui-sref="promotions">Promoções</a></li>
+                    <li><a ui-sref="wishes">Lista de Desejos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ui-sref="about">Sobre</a></li>
@@ -47,7 +49,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="bower_components/angular/angular.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="//npmcdn.com/angular-ui-router@1.0.0-alpha.4/release/angular-ui-router.js"></script>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-app.js"></script>
@@ -57,9 +59,19 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
 
-    <script src="app.js"></script>
+    <!-- Components -->
+    <script src="components/home/home.module.js"></script>
+    <script src="components/home/home.component.js"></script>
+    <script src="components/products/products.module.js"></script>
+    <script src="components/products/products.component.js"></script>
+    <script src="components/promotions/promotions.module.js"></script>
+    <script src="components/promotions/promotions.component.js"></script>
+    <script src="components/wish-list/wish-list.module.js"></script>
+    <script src="components/wish-list/wish-list.component.js"></script>
     <script src="components/company-info/company-info.module.js"></script>
     <script src="components/company-info/company-info.component.js"></script>
+
+    <script src="app.js"></script>
 </body>
 
 <footer class="container-fluid bg-4 text-center">

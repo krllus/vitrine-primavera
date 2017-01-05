@@ -1,3 +1,3 @@
-angular.module('companyInfo',[
+angular.module('company',[
     'firebase'
 ]);
