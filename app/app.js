@@ -15,6 +15,7 @@
     angular
     .module('vitrinePrimaveraApp', [
         'ui.router',
+        'ngMaterial',
         'home',
         'products',
         'promotions',
