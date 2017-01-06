@@ -12,6 +12,12 @@
 
     firebase.initializeApp(config);
 
+    firebase.auth().signInAnonymously();
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        console.log(firebaseUser);
+    });
+
     angular
     .module('vitrinePrimaveraApp', [
         'ui.router',

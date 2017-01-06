@@ -17,7 +17,7 @@ function HomeController($firebaseObject, $firebaseArray){
 function HomeConfig($stateProvider){
     var homeState = {
         name: 'home',
-        url: '/',
+        url: '/home',
         component: 'home'
     };
     $stateProvider.state(homeState);
