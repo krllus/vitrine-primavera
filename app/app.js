@@ -27,7 +27,8 @@
         'promotions',
         'wishList',
         'about',
-        'auth'
+        'auth',
+        'admin'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');

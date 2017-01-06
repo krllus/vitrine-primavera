@@ -12,6 +12,17 @@ function ProductsController($firebaseObject, $firebaseArray){
     ctrl.$onInit = function(){
         console.log('Products component');
     }
+
+    //download categories
+    // list products of selected category
+    const categoriesRef = firebase.database().ref().child('categories');
+    this.categories = $firebaseArray(categoriesRef);
+
+    const productsRef = firebase.database().ref().child('products');
+    this.products = $firebaseArray(productsRef);
+
+    this.categoryFilter = "";
+
 }
 
 function ProductsConfig($stateProvider){

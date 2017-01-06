@@ -1,4 +1,29 @@
-<div class="jumbotron text-center">
-    <h1>The Products Page</h1>
-    <p>This page demonstrates <span class="text-danger">nested</span> views.</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            <p>
+                Buscar:
+                <input ng-model="$ctrl.query">
+            </p>
+
+            <p>
+                <select
+                ng-model="$ctrl.categoryFilter"
+                ng-options="category as category.name for category in $ctrl.categories track by category.$id"
+                />
+            </p>
+
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+            <ul class="products">
+                <li ng-repeat="product in $ctrl.products | filter:$ctrl.query | filter : {catId:$ctrl.categoryFilter.$id} : true">
+                    <span>{{product.name}}</span>
+                    <p>{{product.desc}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
 </div>

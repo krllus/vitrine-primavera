@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Produtos</div>
+    <div class="panel-body">
+        <form novalidate class="simple-form">
+            <label>Name: <input type="text" ng-model="product.name" /></label><br />
+            <label>Descrição: <input type="email" ng-model="product.desc" /></label><br />
+            <label>Categoria:
+                <select
+                ng-model="$ctrl.categoryFilter" ng-options="category as category.name for category in $ctrl.categories track by category.$id"/>
+            </label>
+            <input type="submit" ng-click="saveProduct(product)" value="Salvar" />
+        </form>
+    </div>
+</div>
