@@ -19,48 +19,11 @@
         'products',
         'promotions',
         'wishList',
-        'company'
-
+        'about',
+        'auth'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
-
-        var homeState = {
-            name: 'home',
-            url: '/',
-            component: 'home'
-        };
-
-        var productsState = {
-            name: 'products',
-            url: '/products',
-            component: 'products'
-        }
-
-        var promoState = {
-            name: 'promotions',
-            url: '/promotions',
-            component: 'promotions'
-        }
-
-        var wishesState = {
-            name: 'wishes',
-            url: '/wish-list',
-            component: 'wishList'
-        }
-
-        var aboutState = {
-            name: 'about',
-            url: '/about',
-            component: 'company'
-        }
-
-        $stateProvider.state(homeState);
-        $stateProvider.state(productsState);
-        $stateProvider.state(promoState);
-        $stateProvider.state(wishesState);
-        $stateProvider.state(aboutState);
-
     });
 
 }());

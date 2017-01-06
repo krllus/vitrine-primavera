@@ -1,0 +1,30 @@
+<div class="auth" layout="column" layout-align="center center">
+  <md-card class="md-whiteframe-2dp auth__login-box">
+    <md-toolbar layout="row" layout-align="center center">
+      <a href="../">
+        <img class="auth__logo" src="images/store_icon.png" alt="Logo UFG" />
+      </a>
+    </md-toolbar>
+
+    <md-content class="md-padding">
+      <form layout="column" ng-submit="$ctrl.login()">
+        <p ng-if="$ctrl.error" class="auth__error">Email ou senha incorretos</p>
+
+        <md-input-container>
+          <label>Email</label>
+          <input ng-model="$ctrl.email" type="text">
+        </md-input-container>
+
+        <md-input-container>
+          <label>Password</label>
+          <input type="password" ng-model="$ctrl.password" type="text">
+        </md-input-container>
+
+        <div layout="row" flex layout-align="space-between center" style="padding-top:20px;">
+          <md-button class="md-raised md-primary" type="submit">Login</md-button>
+          <md-button href="" md-no-ink="md-no-ink">Esqueci minha senha</md-button>
+        </div>
+      </form>
+    </md-content>
+  </md-card>
+</div>
