@@ -3,7 +3,7 @@ angular
 .config(WishListConfig)
 .controller('WishListController', WishListController)
 .component('wishList', {
-    templateUrl:'components/wish-list/wish-list.template.html',
+    templateUrl:'components/wish-list/company.template.html',
     controller: 'WishListController'
 });
 

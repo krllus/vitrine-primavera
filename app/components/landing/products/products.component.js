@@ -3,7 +3,7 @@ angular
 .config(ProductsConfig)
 .controller('ProductsController', ProductsController)
 .component('products', {
-    templateUrl:'components/products/products.template.html',
+    templateUrl:'components/products/promotions.template.html',
     controller: 'ProductsController'
 });
 

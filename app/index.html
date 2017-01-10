@@ -18,84 +18,67 @@
 </head>
 <body>
 
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <!-- Navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" ui-sref="home">Vitrine Primavera</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a ui-sref="products">Produtos</a></li>
-                    <li><a ui-sref="promotions">Promoções</a></li>
-                    <li><a ui-sref="wishes">Lista de Desejos</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a ui-sref="about">Sobre</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <ui-view></ui-view>
+<ui-view></ui-view>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-aria/angular-aria.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="/bower_components/angular-material/angular-material.js"></script>
-    <script src="//npmcdn.com/angular-ui-router@1.0.0-alpha.4/release/angular-ui-router.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/bower_components/angular-material/angular-material.js"></script>
+<script src="//npmcdn.com/angular-ui-router@1.0.0-alpha.4/release/angular-ui-router.js"></script>
 
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-database.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase-database.js"></script>
 
-    <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
 
-    <!-- Components -->
-    <script src="components/home/home.module.js"></script>
-    <script src="components/home/home.component.js"></script>
+<!-- Components -->
+<!-- Landing Module-->
+<script src="components/landing/landing.module.js"></script>
+<script src="components/landing/landing.component.js"></script>
+<script src="components/landing/showcase/showcase.module.js"></script>
+<script src="components/landing/showcase/showcase.component.js"></script>
+<script src="components/landing/products/products.module.js"></script>
+<script src="components/landing/products/products.component.js"></script>
+<script src="components/landing/promotions/promotions.module.js"></script>
+<script src="components/landing/promotions/promotions.component.js"></script>
+<script src="components/landing/wish-list/wish-list.module.js"></script>
+<script src="components/landing/wish-list/wish-list.component.js"></script>
+<script src="components/landing/about/about.module.js"></script>
+<script src="components/landing/about/about.component.js"></script>
 
-    <script src="components/products/products.module.js"></script>
-    <script src="components/products/products.component.js"></script>
+<!-- Admin Module-->
+<script src="components/admin/admin.module.js"></script>
+<script src="components/admin/admin.component.js"></script>
+<script src="components/admin/company/company.module.js"></script>
+<script src="components/admin/company/company.component.js"></script>
+<script src="components/admin/notifications/notifications.module.js"></script>
+<script src="components/admin/notifications/notifications.component.js"></script>
+<script src="components/admin/products/products.module.js"></script>
+<script src="components/admin/products/products.component.js"></script>
+<script src="components/admin/promotions/promotions.module.js"></script>
+<script src="components/admin/promotions/promotions.component.js"></script>
+<script src="components/admin/reports/reports.module.js"></script>
+<script src="components/admin/reports/reports.component.js"></script>
+<script src="components/admin/showcase/showcase.module.js"></script>
+<script src="components/admin/showcase/showcase.component.js"></script>
 
-    <script src="components/promotions/promotions.module.js"></script>
-    <script src="components/promotions/promotions.component.js"></script>
 
-    <script src="components/wish-list/wish-list.module.js"></script>
-    <script src="components/wish-list/wish-list.component.js"></script>
+<script src="components/auth/auth.module.js"></script>
+<script src="components/auth/auth.service.js"></script>
+<script src="components/auth/login/login.component.js"></script>
+<script src="components/auth/login/login.controller.js"></script>
 
-    <script src="components/about/about.module.js"></script>
-    <script src="components/about/about.component.js"></script>
-
-    <script src="components/admin/admin.module.js"></script>
-    <script src="components/admin/admin.component.js"></script>
-    <script src="components/admin/categories/categories.module.js"></script>
-    <script src="components/admin/categories/categories.component.js"></script>
-    <script src="components/admin/categories/categories.service.js"></script>
-    <script src="components/admin/categories/categories-form/categories-form.controller.js"></script>
-    <script src="components/admin/categories/categories-form/categories-form.component.js"></script>
-    <script src="components/admin/categories/categories-list/categories-list.controller.js"></script>
-    <script src="components/admin/categories/categories-list/categories-list.component.js"></script>
-
-    <script src="components/auth/auth.module.js"></script>
-    <script src="components/auth/auth.service.js"></script>
-    <script src="components/auth/login/login.component.js"></script>
-    <script src="components/auth/login/login.controller.js"></script>
-
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 
 <footer class="container-fluid bg-4 text-center">

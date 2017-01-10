@@ -14,24 +14,16 @@
 
     firebase.auth().signInAnonymously();
 
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        console.log(firebaseUser);
-    });
-
     angular
     .module('vitrinePrimaveraApp', [
         'ui.router',
         'ngMaterial',
-        'home',
-        'products',
-        'promotions',
-        'wishList',
-        'about',
-        'auth',
-        'admin'
+        'landing',
+        'admin',
+        'auth'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/');
     });
 
 }());

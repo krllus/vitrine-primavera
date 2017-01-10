@@ -1,21 +1,24 @@
 angular
 .module('admin.products')
-.component('products', CampusesComponent())
-.config(CampusesConfig);
+.config(ProductsConfig)
+.controller('ProductsController', ProductsController)
+.component('products', {
+    templateUrl:'components/admin/products/products.template.html',
+    controller: 'ProductsController'
+});
 
-function CampusesComponent() {
-    return {
-        template: '<ui-view autoscroll></ui-view>'
-    };
+function ProductsController($firebaseObject, $firebaseArray){
+    var ctrl = this;
+    ctrl.$onInit = function(){
+        console.log('Products component');
+    }
 }
 
-function CampusesConfig($stateProvider) {
+function ProductsConfig($stateProvider) {
     var state = {
         name: 'admin.products',
-        parent: 'admin',
-        url: '/admin/products',
-        component: 'products',
-        redirectTo: 'admin.products.list'
+        url: '/produtos',
+        component: 'products'
     };
 
     $stateProvider.state(state);

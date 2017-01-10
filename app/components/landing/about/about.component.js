@@ -11,7 +11,7 @@ function AboutController($firebaseObject, $firebaseArray){
     var ctrl = this;
     ctrl.$onInit = function(){
         console.log('About component');
-    }
+    };
 
     const storeRef = firebase.database().ref().child('store');
     const phonesRef = storeRef.child('phones');
@@ -25,7 +25,7 @@ function AboutConfig($stateProvider){
         name: 'about',
         url: '/about',
         component: 'about'
-    }
+    };
 
     $stateProvider.state(aboutState);
 }

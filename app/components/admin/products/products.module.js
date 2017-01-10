@@ -1,4 +1,1 @@
-angular.
-module("admin.products",[
-    'firebase'
-]);
+angular.module('admin.products',[]);

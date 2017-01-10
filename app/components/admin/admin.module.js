@@ -1,4 +1,9 @@
 angular.module('admin',[
     'firebase',
-    'admin.categories'
+    'admin.company',
+    'admin.notifications',
+    'admin.products',
+    'admin.promotions',
+    'admin.reports',
+    'admin.showcase'
 ]);
