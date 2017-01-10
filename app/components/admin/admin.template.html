@@ -1,18 +1,21 @@
 
 <div class="container">
-  <h3>Painel Administrativo</h3>
-  <div class="row">
-    <div class="col-md-4">
-      <ul class="nav nav-pills nav-stacked">
-          <li><a href="#">Destaque</a></li>
-          <li><a href="#">Promoções</a></li>
-          <li><a href="#">Produtos</a></li>
-          <li><a href="#">Categorias</a></li>
-      </ul>
+    <h3>Painel Administrativo</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="nav nav-pills nav-stacked">
+                <!--
+                <li><a href="/admin/featured">Destaque</a></li>
+                <li><a href="/admin/promotions">Promoções</a></li>
+
+                <li><a ui-sref="admin.products">Produtos</a></li>
+            -->
+            <li><a ui-sref="admin.categories">Categorias</a></li>
+        </ul>
     </div>
     <div class="col-md-8">
         <ui-view="admin-container"></ui-view>
     </div>
     <div class="clearfix visible-lg"></div>
-  </div>
+</div>
 </div>

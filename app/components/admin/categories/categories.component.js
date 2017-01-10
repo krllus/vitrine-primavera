@@ -1,21 +1,19 @@
 angular
 .module('admin.categories')
-.component('categories', CampusesComponent())
-.config(CampusesConfig);
+.component('categoriesComponent', CategoriesComponent)
+.config(CategoriesConfig);
 
-function CampusesComponent() {
-    return {
-        template: '<ui-view autoscroll></ui-view>'
-    };
+function CategoriesComponent() {
+  return {
+    template: '<ui-view autoscroll></ui-view>'
+  };
 }
 
-function CampusesConfig($stateProvider) {
+function CategoriesConfig($stateProvider) {
     var state = {
         name: 'admin.categories',
         parent: 'admin',
-        url: '/admin/categories',
-        component: 'categories',
-        redirectTo: 'admin.categories.list'    
+        url: '/categories'
     };
 
     $stateProvider.state(state);
