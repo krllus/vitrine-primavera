@@ -1,5 +1,46 @@
-<div class="jumbotron text-center">
-    <h1>The Admin Company Page</h1>
-    <p>This page demonstrates <span class="text-danger">nested</span> views.</p>
+<form class="form-horizontal" ng-submit="$ctrl.save()">
 
-</div>
+    <!-- Store Name -->
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Nome:</label>
+        <div class="col-sm-10">
+            <input id="name" type="text" ng-model="$ctrl.store.name" placeholder="Nome da Loja">
+        </div>
+    </div>
+
+
+
+    <!-- Lista de telefones + botoes de adicionar-->
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="phones">Telefones:</label><br>
+        <div id="phones" class="col-sm-10">
+            <!--<div ng-repeat="phone in $ctrl.phones | orderBy:priority">-->
+            <div ng-repeat="phone in $ctrl.phones ">
+
+                <input type="text" ng-model="phone.number">
+
+                <div layout="column" layout-align="space-between center" hide show-gt-sm>
+                    <md-icon ng-click="$ctrl.up(phone)">arrow_drop_up</md-icon>
+                    <md-icon ng-click="$ctrl.down(phone)" >arrow_drop_down</md-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="form-group">
+        <label for="map" class="control-label col-sm-2">Localização:</label><br>
+        <div id="map" class="col-sm-10">
+
+        </div>
+    </div>
+
+    <!-- Save -->
+    <button type="submit" class="pull-right btn btn-default">Salvar</button>
+
+
+</form>
+<pre>{{$ctrl.store | json}}</pre>
+<pre>{{$ctrl.phones | json}}</pre>
+<br>
+<br>

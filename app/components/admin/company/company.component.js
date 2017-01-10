@@ -14,8 +14,22 @@ function CompanyController($firebaseObject, $firebaseArray){
     };
 
     const storeRef = firebase.database().ref().child('store');
-    this.store = $firebaseObject(storeRef);
+    const phonesRef = storeRef.child('phones');
 
+    this.store = $firebaseObject(storeRef);
+    this.phones = $firebaseArray(phonesRef);
+
+    this.save = function(){
+        this.saveStore(store);
+    };
+
+    this.saveStore = function(store){
+        store.$save().then(function() {
+            console.log("salvou com sucesso");
+        }).catch(function(error) {
+            console.log("erro ao salvar");
+        });
+    };
 
 }
 

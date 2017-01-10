@@ -3,7 +3,7 @@ angular
 .config(NotificationConfig)
 .controller('NotificationController', NotificationController)
 .component('notifications', {
-    templateUrl:'components/admin/notifications/company.template.html',
+    templateUrl:'components/admin/notifications/notifications.template.html',
     controller: 'NotificationController'
 });
 
