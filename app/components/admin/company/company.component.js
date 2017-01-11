@@ -4,32 +4,47 @@ angular
 .controller('CompanyController', CompanyController)
 .component('company', {
     templateUrl:'components/admin/company/company.template.html',
-    controller: 'CompanyController'
+    controller: 'CompanyController',
+    bindings:{
+        store: '<',
+        phones: '<'
+    }
 });
 
-function CompanyController($firebaseObject, $firebaseArray){
+function CompanyController(CompanyService){
     var ctrl = this;
     ctrl.$onInit = function(){
         console.log('company component');
     };
 
-    const storeRef = firebase.database().ref().child('store');
-    const phonesRef = storeRef.child('phones');
+    this.saveAll = function () {
+        console.log('saving all');
+        ctrl.store.phones = toObject(ctrl.phones);
 
-    this.store = $firebaseObject(storeRef);
-    this.phones = $firebaseArray(phonesRef);
-
-    this.save = function(){
-        this.saveStore(store);
+        CompanyService.saveStore(ctrl.store);
     };
 
-    this.saveStore = function(store){
-        store.$save().then(function() {
-            console.log("salvou com sucesso");
-        }).catch(function(error) {
-            console.log("erro ao salvar");
-        });
+    this.removePhone = function (phone) {
+        CompanyService.removePhone(phone);
     };
+
+    this.addPhone = function () {
+        ctrl.phone.priority = ctrl.phones.length + 1;
+        CompanyService.addPhone(ctrl.phone);
+
+        ctrl.phone = undefined;
+    };
+
+    var toObject = function (array) {
+        var obj = {};
+
+        for (var i = 0; i < array.length; i++) {
+            var id = array[i].$id;
+            obj[id] = array[i];
+        }
+
+        return obj;
+    }
 
 }
 
@@ -37,7 +52,15 @@ function CompanyConfig($stateProvider) {
     var state = {
         name: 'admin.company',
         url: '/empresa',
-        component: 'company'
+        component: 'company',
+        resolve:{
+            store: function (CompanyService) {
+                return CompanyService.fetchStore();
+            },
+            phones: function(CompanyService){
+                return CompanyService.fetchPhones();
+            }
+        }
     };
 
     $stateProvider.state(state);
