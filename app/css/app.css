@@ -35,12 +35,12 @@
   height: 100%;
   background-size: cover;
   background-position: center center;
+}
 
-  md-toolbar {
+md-toolbar {
     background-color: #fff;
     padding: 20px 0;
     cursor: pointer;
-  }
 }
 
 .auth__login-box {
@@ -57,3 +57,15 @@
   color: #c0392b;
   font-weight: bold;
 }
+
+.navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; }
+
+
+
+.listdemoBasicUsage md-divider {
+    margin-top: 10px;
+    margin-bottom: 0; }
+

@@ -1,4 +1,42 @@
-<div class="jumbotron text-center">
-    <h1>The Admin Products Page</h1>
-    <p>This page demonstrates <span class="text-danger">nested</span> views.</p>
-</div>
+<md-content class="md-padding">
+    <md-nav-bar md-selected-nav-item="$ctrl.currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-click="goto('products')" name="products">Produtos</md-nav-item>
+        <md-nav-item md-nav-click="goto('categories')" name="categories">Categorias</md-nav-item>
+    </md-nav-bar>
+
+    <!-- Produtos-->
+    <div class="ext-content" ng-show="$ctrl.currentNavItem=='products'">
+        <md-content>
+            <md-list flex>
+                <md-list-item ng-click="null" class="md-2-line" ng-repeat="product in $ctrl.products">
+                    <div class="md-list-item-text">
+                        <h3>{{product.name}}</h3>
+                    </div>
+                    <md-button class="md-secondary" ng-click="$ctrl.removeProduct(product)">Excluir</md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+
+    <!-- Categorias -->
+    <div class="ext-content" ng-show="$ctrl.currentNavItem=='categories'">
+        <md-content>
+            <md-list flex>
+                <md-list-item>
+                    <md-input-container class="md-block">
+                        <label>Nova Categoria</label>
+                        <input ng-model="$ctrl.category.name" type="text">
+                    </md-input-container>
+                    <md-button class="md-secondary" ng-click="$ctrl.addCategory()">Adicionar</md-button>
+                </md-list-item>
+                <md-list-item ng-click="null" class="md-2-line" ng-repeat="category in $ctrl.categories">
+                    <div class="md-list-item-text">
+                        <h3>{{category.name}}</h3>
+                    </div>
+                    <md-button class="md-secondary" ng-click="$ctrl.removeCategory(category)">Excluir</md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+
+</md-content>
