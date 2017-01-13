@@ -16,33 +16,28 @@ function CompanyService($firebaseObject, $firebaseArray) {
         return $firebaseArray(phonesRef).$loaded();
     };
 
-    this.getPhone = function (phoneId){
-        var ref_phone = phonesRef.child(phoneId);
-        return $firebaseObject(ref_phone).$loaded();
-    };
-
-    this.addPhone = function (phone) {
-        return $firebaseArray(phonesRef)
-            .$add(phone).then(function() {
-                console.log("phone: add com sucesso");
-            }).catch(function(error) {
-                console.error("phone: add ao remove: " + error);
-            });
-    };
-
-    this.removePhone = function (phone) {
-
-        var p = this.getPhone(phone.$id).then(function () {
-            console.log('phone: ' + p);
-            return $firebaseArray(phonesRef).$remove(p)
-                .then(function() {
-                    console.log("phone: remove com sucesso");
-                }).catch(function(error) {
-                    console.error("phone: erro ao remove: " + error);
-                });
+    this.savePhone = function (phones, phone) {
+        return phones.$save(phone).then(function () {
+            console.log('phone: save with success');
+        }).catch(function (error) {
+            console.error('phone: save error, ' + error);
         });
+    };
 
+    this.addPhone = function (phones,phone) {
+        return phones.$add(phone).then(function() {
+            console.log("phone: add com sucesso");
+        }).catch(function(error) {
+            console.error("phone: add ao remove: " + error);
+        });
+    };
 
+    this.removePhone = function (phones,phone) {
+        return phones.$remove(phone).then(function() {
+            console.log("phone: remove com sucesso");
+        }).catch(function(error) {
+            console.error("phone: erro ao remove: " + error);
+        });
     };
 
     this.saveStore = function (store) {

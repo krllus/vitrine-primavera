@@ -19,32 +19,23 @@ function CompanyController(CompanyService){
 
     this.saveAll = function () {
         console.log('saving all');
-        ctrl.store.phones = toObject(ctrl.phones);
-
         CompanyService.saveStore(ctrl.store);
-    };
-
-    this.removePhone = function (phone) {
-        CompanyService.removePhone(phone);
     };
 
     this.addPhone = function () {
         ctrl.phone.priority = ctrl.phones.length + 1;
-        CompanyService.addPhone(ctrl.phone);
+        CompanyService.addPhone(ctrl.phones, ctrl.phone);
 
         ctrl.phone = undefined;
     };
 
-    var toObject = function (array) {
-        var obj = {};
+    this.savePhone = function (phone) {
+        CompanyService.savePhone(ctrl.phones, phone);
+    };
 
-        for (var i = 0; i < array.length; i++) {
-            var id = array[i].$id;
-            obj[id] = array[i];
-        }
-
-        return obj;
-    }
+    this.removePhone = function (phone) {
+        CompanyService.removePhone(ctrl.phones, phone);
+    };
 
 }
 
