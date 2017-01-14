@@ -18,7 +18,7 @@ function CategoriesFormConfig($stateProvider) {
     .state({
         name: 'admin.products.category-new',
         url: '/categoria-nova',
-        component: 'categories-form',
+        component: 'categories-form'
     })
     .state({
         name: 'admin.products.category-edit',

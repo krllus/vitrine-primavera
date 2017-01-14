@@ -25,7 +25,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         }).catch(function (error) {
             console.error('fetch category error: ' + error);
         });
-    }
+    };
 
     this.fetchProduct = function(productId){
         var prod_ref = productsRef.child(productId);
@@ -34,7 +34,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         }).catch(function (error) {
             console.error('fetch product error: ' + error);
         });
-    }
+    };
 
     this.addCategory = function(category){
         return $firebaseArray(categoriesRef).$add(category).then(function () {
@@ -59,7 +59,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         }).catch(function(error){
             console.error('category save error' + error);
         });
-    }
+    };
 
     this.saveProduct = function (product, oldCategoryId){
         return product.$save(product).then(function(){
@@ -69,7 +69,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         }).catch(function(error){
             console.error('product save error' + error);
         });
-    }
+    };
 
     this.removeCategory = function (category) {
         return category.$remove(category).then(function () {
@@ -81,7 +81,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
 
     this.removeProduct = function (product) {
         return product.$remove(product).then(function () {
-            removeProductFromCategory(product.catId, product.$id);
+            this.removeProductFromCategory(product.catId, product.$id);
             console.log('remove product success');
         }).catch(function (error) {
             console.error('remove product error: ' + error);

@@ -18,7 +18,7 @@ function ProductsFormConfig($stateProvider) {
     .state({
         name: 'admin.products.product-new',
         url: '/produto-novo',
-        component: 'products-form',
+        component: 'products-form'
     })
     .state({
         name: 'admin.products.product-edit',

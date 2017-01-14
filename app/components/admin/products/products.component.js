@@ -1,33 +1,12 @@
 angular
 .module('admin.products')
-.config(ProductsConfig)
-.controller('ProductsController', ProductsController)
-.component('products', {
-    templateUrl:'components/admin/products/products.template.html',
-    controller: 'ProductsController',
-    bindings:{
-        categories: '<'
-    }
-});
+.component('products', ProductsComponent)
+.config(ProductsConfig);
 
-function ProductsController(ProductsService){
-    var ctrl = this;
-    ctrl.$onInit = function(){
-        console.log('Products component');
+function ProductsComponent() {
+    return {
+        template: '<ui-view autoscroll></ui-view>'
     };
-
-    ctrl.currentNavItem = 'categories';
-
-    ctrl.removeCategory = function (category) {
-        console.log(category);
-        ProductsService.removeCategory(ctrl.categories, category);
-    };
-
-    ctrl.addCategory = function () {
-        ProductsService.addCategory(ctrl.category);
-        ctrl.category = undefined;
-    }
-
 }
 
 function ProductsConfig($stateProvider) {
@@ -35,11 +14,7 @@ function ProductsConfig($stateProvider) {
         name: 'admin.products',
         url: '/produtos',
         component: 'products',
-        resolve:{
-            categories: function (ProductsService) {
-                return ProductsService.fetchCategories();
-            }
-        }
+        redirectTo: 'admin.products.list'
     };
 
     $stateProvider.state(state);

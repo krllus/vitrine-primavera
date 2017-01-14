@@ -3,6 +3,9 @@ angular
 .controller('ProductFormController', ProductFormController);
 
 function ProductFormController(ProductsService, $state) {
+
+    ctrl.currentNavItem = 'categories';
+
     var ctrl = this;
 
     ctrl.$onInit = function() {
