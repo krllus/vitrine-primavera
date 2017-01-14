@@ -12,7 +12,6 @@
                     <div class="md-list-item-text">
                         <h3>{{product.name}}</h3>
                     </div>
-                    <md-button class="md-secondary" ng-click="$ctrl.removeProduct(product)">Excluir</md-button>
                 </md-list-item>
             </md-list>
         </md-content>
@@ -22,18 +21,11 @@
     <div class="ext-content" ng-show="$ctrl.currentNavItem=='categories'">
         <md-content>
             <md-list flex>
-                <md-list-item>
-                    <md-input-container class="md-block">
-                        <label>Nova Categoria</label>
-                        <input ng-model="$ctrl.category.name" type="text">
-                    </md-input-container>
-                    <md-button class="md-secondary" ng-click="$ctrl.addCategory()">Adicionar</md-button>
-                </md-list-item>
                 <md-list-item ng-click="null" class="md-2-line" ng-repeat="category in $ctrl.categories">
                     <div class="md-list-item-text">
                         <h3>{{category.name}}</h3>
                     </div>
-                    <md-button class="md-secondary" ng-click="$ctrl.removeCategory(category)">Excluir</md-button>
+                    <!-- <md-button class="md-secondary" ng-click="$ctrl.removeCategory(category)">Excluir</md-button>-->
                 </md-list-item>
             </md-list>
         </md-content>

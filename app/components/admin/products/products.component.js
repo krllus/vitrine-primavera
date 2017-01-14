@@ -6,7 +6,6 @@ angular
     templateUrl:'components/admin/products/products.template.html',
     controller: 'ProductsController',
     bindings:{
-        products: '<',
         categories: '<'
     }
 });
@@ -17,18 +16,15 @@ function ProductsController(ProductsService){
         console.log('Products component');
     };
 
-    ctrl.currentNavItem = 'products';
-
-    ctrl.removeProduct = function (product) {
-        ProductsService.removeProduct(ctrl.products, product);
-    };
+    ctrl.currentNavItem = 'categories';
 
     ctrl.removeCategory = function (category) {
+        console.log(category);
         ProductsService.removeCategory(ctrl.categories, category);
     };
 
     ctrl.addCategory = function () {
-        ProductsService.addCategory(ctrl.categories, ctrl.category);
+        ProductsService.addCategory(ctrl.category);
         ctrl.category = undefined;
     }
 
@@ -40,17 +36,11 @@ function ProductsConfig($stateProvider) {
         url: '/produtos',
         component: 'products',
         resolve:{
-            products: function (ProductsService) {
-                return ProductsService.fetchProducts();
-            },
             categories: function (ProductsService) {
                 return ProductsService.fetchCategories();
             }
         }
     };
-
-
-
 
     $stateProvider.state(state);
 }
