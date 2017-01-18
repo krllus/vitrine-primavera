@@ -8,7 +8,8 @@ function ProductsFormComponent() {
         templateUrl: 'components/admin/products/products-form/products-form.template.html',
         controller: 'ProductFormController',
         bindings: {
-            product: '<'
+            product: '<',
+            categories: '<'
         }
     };
 }
@@ -18,7 +19,12 @@ function ProductsFormConfig($stateProvider) {
     .state({
         name: 'admin.products.newProduct',
         url: '/novo-produto',
-        component: 'productsForm'
+        component: 'productsForm',
+        resolve:{
+            categories: function (ProductsService) {
+                return ProductsService.fetchCategories();
+            }
+        }
     })
     .state({
         name: 'admin.products.editProduct',
@@ -27,6 +33,9 @@ function ProductsFormConfig($stateProvider) {
         resolve: {
             product: function($transition$, ProductsService){
                 return ProductsService.fetchProduct($transition$.params().id);
+            },
+            categories: function (ProductsService) {
+                return ProductsService.fetchCategories();
             }
         }
     });

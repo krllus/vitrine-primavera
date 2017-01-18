@@ -1,1 +1,42 @@
-<h1>Hello world</h1>
+<div layout="column" class="md-inline-form" >
+    <md-content layout-padding>
+        <div>
+            <form name="userForm" novalidate>
+                <md-input-container class="md-block">
+                    <label>Nome</label>
+                    <input type="text" name="name" ng-model="$ctrl.product.name" required>
+
+                </md-input-container>
+
+                <!-- TODO add product icon here -->
+
+                <md-input-container class="md-block">
+                    <label>Categoria</label>
+                    <md-select ng-model="$ctrl.product.categoryId">
+                        <md-option ng-repeat="category in $ctrl.categories" value="{{category.$id}}">
+                            {{category.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Descrição</label>
+                    <textarea
+                            ng-model="$ctrl.product.description"
+                            md-maxlength="150"
+                            rows="3"
+                            required
+                            md-select-on-focus></textarea>
+                </md-input-container>
+
+                <div layout="row" layout-align="end">
+                    <md-button
+                            ng-disabled="userForm.$invalid"
+                            ng-click="$ctrl.saveProduct()">Salvar</md-button>
+                    <md-button
+                            ng-click="$ctrl.cancel()">Cancelar</md-button>
+                </div>
+            </form>
+        </div>
+    </md-content>
+</div>

@@ -7,18 +7,19 @@ function ProductsService($firebaseObject, $firebaseArray) {
     const productsRef = firebase.database().ref().child('products');
 
     const catProdRef = firebase.database().ref().child('categoryProducts');
+    var service = this;
 
-    this.fetchCategories = function () {
+    service.fetchCategories = function () {
         console.log('downloading categories');
         return $firebaseArray(categoriesRef).$loaded();
     };
 
-    this.fetchProducts = function () {
+    service.fetchProducts = function () {
         console.log('downloading products');
         return $firebaseArray(productsRef).$loaded();
     };
 
-    this.fetchCategory = function(categoryId){
+    service.fetchCategory = function(categoryId){
         var cat_ref = categoriesRef.child(categoryId);
         return $firebaseObject(cat_ref).$loaded().then(function(){
             console.log('fetch category success');
@@ -27,7 +28,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         });
     };
 
-    this.fetchProduct = function(productId){
+    service.fetchProduct = function(productId){
         var prod_ref = productsRef.child(productId);
         return $firebaseObject(prod_ref).$loaded().then(function(){
             console.log('fetch product success');
@@ -36,7 +37,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
         });
     };
 
-    this.addCategory = function(category){
+    service.addCategory = function(category){
         return $firebaseArray(categoriesRef).$add(category).then(function () {
             console.log('category add success');
         }).catch(function (error) {
@@ -44,16 +45,17 @@ function ProductsService($firebaseObject, $firebaseArray) {
         });
     };
 
-    this.addProduct = function(product){
-        return $firebaseArray(productsRef).$add(product).then(function () {
-            addProductToCategory(product);
+    service.addProduct = function(product){
+        return $firebaseArray(productsRef).$add(product).then(function (ref) {
+            var productId = ref.getKey();
+            service.addProductIdToCategory(product.categoryId, productId);
             console.log('product add success');
         }).catch(function (error) {
             console.error('error add product: ' + error);
         });
     };
 
-    this.saveCategory = function (category){
+    service.saveCategory = function (category){
         return category.$save(category).then(function(){
             console.log('category save success');
         }).catch(function(error){
@@ -61,17 +63,18 @@ function ProductsService($firebaseObject, $firebaseArray) {
         });
     };
 
-    this.saveProduct = function (product, oldCategoryId){
-        return product.$save(product).then(function(){
-            removeProductFromCategory(oldCategoryId, product.$id);
-            addProductToCategory(product);
+    service.saveProduct = function (product, oldCategoryId){
+        return product.$save(product).then(function(ref){
+            var prodId = ref.key();
+            service.removeProductIdFromCategory(oldCategoryId, prodId);
+            service.addProductIdToCategory(product.categoryId, prodId);
             console.log('product save success');
         }).catch(function(error){
             console.error('product save error' + error);
         });
     };
 
-    this.removeCategory = function (category) {
+    service.removeCategory = function (category) {
         return category.$remove(category).then(function () {
             console.log('remove category success');
         }).catch(function (error) {
@@ -79,33 +82,30 @@ function ProductsService($firebaseObject, $firebaseArray) {
         });
     };
 
-    this.removeProduct = function (product) {
-        return product.$remove(product).then(function () {
-            this.removeProductFromCategory(product.catId, product.$id);
+    service.removeProduct = function (product) {
+        return product.$remove(product).then(function (ref) {
+            var prodId = ref.key();
+            service.removeProductIdFromCategory(product.categoryId, prodId);
             console.log('remove product success');
         }).catch(function (error) {
             console.error('remove product error: ' + error);
         });
     };
 
-    this.addProductToCategory = function(product){
-        var ref = catProdRef.child(product.catId);
+    service.addProductIdToCategory = function(categoryId, productId){
+        var catProd = firebase.database().ref('categoryProducts/' + categoryId);
 
-        //TODO check this 'p' object right here
-        var id = product.$id;
-        var p = {
-            id: true
-        };
+        var product = {};
+        product[productId] = true;
 
-        return $firebaseObject(ref).$save(p).then(function(){
+        return catProd.update(product).then(function(){
             console.log('add product to category success');
         }).catch(function(error){
             console.error('add product to category error: ' + error );
         });
     };
 
-
-    this.removeProductFromCategory = function(categoryId, productId) {
+    service.removeProductIdFromCategory = function(categoryId, productId) {
         var ref = catProdRef.child(categoryId);
         return $firebaseObject(ref).$remove(productId).then(function() {
             console.log('remove product from category success');

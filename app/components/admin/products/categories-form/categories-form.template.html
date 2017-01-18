@@ -1,0 +1,33 @@
+<div layout="column" class="md-inline-form" >
+    <md-content layout-padding>
+        <div>
+            <form name="userForm" novalidate>
+                <md-input-container class="md-block">
+                    <label>Nome</label>
+                    <input type="text" name="name" ng-model="$ctrl.category.name" required>
+
+                </md-input-container>
+
+                <!-- TODO add category icon here -->
+
+                <md-input-container class="md-block">
+                    <label>Descrição</label>
+                    <textarea
+                            ng-model="$ctrl.category.desc"
+                            md-maxlength="150"
+                            rows="3"
+                            required
+                            md-select-on-focus></textarea>
+                </md-input-container>
+
+                <div layout="row" layout-align="end">
+                    <md-button
+                            ng-disabled="userForm.$invalid"
+                            ng-click="$ctrl.saveCategory()">Salvar</md-button>
+                    <md-button
+                            ng-click="$ctrl.cancel()">Cancelar</md-button>
+                </div>
+            </form>
+        </div>
+    </md-content>
+</div>

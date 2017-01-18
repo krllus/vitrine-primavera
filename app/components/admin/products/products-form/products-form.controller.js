@@ -5,8 +5,6 @@ angular
 function ProductFormController(ProductsService, $state) {
     var ctrl = this;
 
-    ctrl.currentNavItem = 'categories';
-
     ctrl.$onInit = function() {
 
         console.log(ctrl.product);
@@ -20,7 +18,7 @@ function ProductFormController(ProductsService, $state) {
         }
     };
 
-    ctrl.save = function() {
+    ctrl.saveProduct = function() {
         if(ctrl.isNew){
             ProductsService.addProduct(ctrl.product).then(function(){
                 ctrl.back();
@@ -32,13 +30,7 @@ function ProductFormController(ProductsService, $state) {
         }
     };
 
-    ctrl.remove = function() {
-        ProductsService.removeProduct(ctrl.product).then(function(){
-            ctrl.back();
-        });
-    };
-
     ctrl.back = function() {
-        $state.go('admin.products');
+        $state.go('admin.products.list');
     };
 }

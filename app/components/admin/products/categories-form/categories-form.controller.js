@@ -10,7 +10,7 @@ function CategoriesFormController(ProductsService, $state) {
         console.log('category new component');
     };
 
-    ctrl.save = function() {
+    ctrl.saveCategory = function() {
         if(ctrl.isNew){
             ProductsService.addCategory(ctrl.category).then(function(){
                 ctrl.back();
@@ -22,13 +22,12 @@ function CategoriesFormController(ProductsService, $state) {
         }
     };
 
-    ctrl.remove = function() {
-        ProductsService.removeCategory(ctrl.category).then(function(){
-            ctrl.back();
-        });
+    ctrl.cancel = function () {
+        //TODO show confirm cancel dialog
+        ctrl.back();
     };
 
     ctrl.back = function() {
-        $state.go('admin.products');
+        $state.go('admin.products.list');
     };
 }
