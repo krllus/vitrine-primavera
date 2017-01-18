@@ -7,8 +7,6 @@ function ProductFormController(ProductsService, $state) {
 
     ctrl.$onInit = function() {
 
-        console.log(ctrl.product);
-
         ctrl.isNew = (ctrl.product === undefined);
         if(ctrl.isNew){
             console.log('product new component');
@@ -17,6 +15,8 @@ function ProductFormController(ProductsService, $state) {
             console.log('product edit component');
         }
     };
+
+    console.log(ctrl.product);
 
     ctrl.saveProduct = function() {
         if(ctrl.isNew){
@@ -28,6 +28,11 @@ function ProductFormController(ProductsService, $state) {
                 ctrl.back();
             });
         }
+    };
+
+    ctrl.cancel = function () {
+        //TODO show confirm cancel dialog
+        ctrl.back();
     };
 
     ctrl.back = function() {

@@ -65,9 +65,13 @@ function ProductsService($firebaseObject, $firebaseArray) {
 
     service.saveProduct = function (product, oldCategoryId){
         return product.$save(product).then(function(ref){
-            var prodId = ref.key();
-            service.removeProductIdFromCategory(oldCategoryId, prodId);
-            service.addProductIdToCategory(product.categoryId, prodId);
+            var prodId = ref.getKey();
+
+            if(oldCategoryId != product.categoryId){
+                service.removeProductIdFromCategory(oldCategoryId, prodId);
+                service.addProductIdToCategory(product.categoryId, prodId);
+            }
+
             console.log('product save success');
         }).catch(function(error){
             console.error('product save error' + error);
@@ -75,6 +79,9 @@ function ProductsService($firebaseObject, $firebaseArray) {
     };
 
     service.removeCategory = function (category) {
+
+        //TODO remove all products in that category
+
         return category.$remove(category).then(function () {
             console.log('remove category success');
         }).catch(function (error) {
@@ -84,7 +91,7 @@ function ProductsService($firebaseObject, $firebaseArray) {
 
     service.removeProduct = function (product) {
         return product.$remove(product).then(function (ref) {
-            var prodId = ref.key();
+            var prodId = ref.getKey();
             service.removeProductIdFromCategory(product.categoryId, prodId);
             console.log('remove product success');
         }).catch(function (error) {

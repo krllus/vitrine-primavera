@@ -32,5 +32,13 @@ function ProductsListController(ProductsService, $state) {
                 $state.go('^.newCategory');
                 break;
         }
+    };
+
+    ctrl.editProduct = function(productId){
+        $state.go('admin.products.editProduct', {id: productId});
+    };
+
+    ctrl.editCategory = function(categoryId){
+        $state.go('admin.products.editCategory', {id: categoryId});
     }
 }

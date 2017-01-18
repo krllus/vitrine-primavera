@@ -31,11 +31,11 @@ function ProductsFormConfig($stateProvider) {
         url: '/editar-produto/:id',
         component: 'productsForm',
         resolve: {
-            product: function($transition$, ProductsService){
-                return ProductsService.fetchProduct($transition$.params().id);
-            },
             categories: function (ProductsService) {
                 return ProductsService.fetchCategories();
+            },
+            product: function($transition$, ProductsService){
+                return ProductsService.fetchProduct($transition$.params().id);
             }
         }
     });
