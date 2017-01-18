@@ -1,6 +1,6 @@
 angular
 .module('admin.products')
-.component('categories-form', CategoriesFormComponent())
+.component('categoriesForm', CategoriesFormComponent())
 .config(CategoriesFormConfig);
 
 function CategoriesFormComponent() {
@@ -16,14 +16,14 @@ function CategoriesFormComponent() {
 function CategoriesFormConfig($stateProvider) {
     $stateProvider
     .state({
-        name: 'admin.products.category-new',
-        url: '/categoria-nova',
-        component: 'categories-form'
+        name: 'admin.products.newCategory',
+        url: '/nova-categoria',
+        component: 'categoriesForm'
     })
     .state({
-        name: 'admin.products.category-edit',
-        url: '/categoria-editar/:id',
-        component: 'categories-form',
+        name: 'admin.products.editCategory',
+        url: '/editar-categoria/:id',
+        component: 'categoriesForm',
         resolve: {
             category: function($transition$, ProductsService){
                 return ProductsService.fetchCategory($transition$.params().id);

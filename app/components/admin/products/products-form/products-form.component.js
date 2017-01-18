@@ -1,6 +1,6 @@
 angular
 .module('admin.products')
-.component('products-form', ProductsFormComponent())
+.component('productsForm', ProductsFormComponent())
 .config(ProductsFormConfig);
 
 function ProductsFormComponent() {
@@ -16,14 +16,14 @@ function ProductsFormComponent() {
 function ProductsFormConfig($stateProvider) {
     $stateProvider
     .state({
-        name: 'admin.products.product-new',
-        url: '/produto-novo',
-        component: 'products-form'
+        name: 'admin.products.newProduct',
+        url: '/novo-produto',
+        component: 'productsForm'
     })
     .state({
-        name: 'admin.products.product-edit',
-        url: '/produto-editar/:id',
-        component: 'products-form',
+        name: 'admin.products.editProduct',
+        url: '/editar-produto/:id',
+        component: 'productsForm',
         resolve: {
             product: function($transition$, ProductsService){
                 return ProductsService.fetchProduct($transition$.params().id);

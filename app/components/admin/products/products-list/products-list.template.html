@@ -1,8 +1,19 @@
 <md-content class="md-padding">
-    <md-nav-bar md-selected-nav-item="$ctrl.currentNavItem" nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-click="goto('products')" name="products">Produtos</md-nav-item>
-        <md-nav-item md-nav-click="goto('categories')" name="categories">Categorias</md-nav-item>
-    </md-nav-bar>
+
+    <div layout="row">
+        <md-content class="md-padding" flex="85">
+            <md-nav-bar md-selected-nav-item="$ctrl.currentNavItem" nav-bar-aria-label="navigation links">
+                <md-nav-item
+                        ng-repeat="item in $ctrl.navItems"
+                        md-nav-click="goto('{{item.value}}'); $ctrl.updateAddItemLabel(item)"
+                        name="{{item.value}}">{{item.label}}</md-nav-item>
+            </md-nav-bar>
+        </md-content>
+        <div flex="15">
+            <md-button layout="end" ng-click="$ctrl.newItem()">{{$ctrl.newItemLabel}}</md-button>
+        </div>
+    </div>
+
 
     <!-- Produtos-->
     <div class="ext-content" ng-show="$ctrl.currentNavItem=='products'">

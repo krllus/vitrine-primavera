@@ -3,15 +3,20 @@ angular
 .controller('ProductFormController', ProductFormController);
 
 function ProductFormController(ProductsService, $state) {
+    var ctrl = this;
 
     ctrl.currentNavItem = 'categories';
 
-    var ctrl = this;
-
     ctrl.$onInit = function() {
+
+        console.log(ctrl.product);
+
         ctrl.isNew = (ctrl.product === undefined);
         if(ctrl.isNew){
+            console.log('product new component');
+        }else{
             ctrl.oldCategoryId = ctrl.product.catId;
+            console.log('product edit component');
         }
     };
 

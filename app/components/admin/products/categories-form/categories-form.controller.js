@@ -1,12 +1,13 @@
 angular
 .module('admin.products')
-.controller('CategoryFormController', CategoryFormController);
+.controller('CategoriesFormController', CategoriesFormController);
 
-function CategoryFormController(ProductsService, $state) {
+function CategoriesFormController(ProductsService, $state) {
     var ctrl = this;
 
     ctrl.$onInit = function() {
         ctrl.isNew = (ctrl.category === undefined);
+        console.log('category new component');
     };
 
     ctrl.save = function() {
