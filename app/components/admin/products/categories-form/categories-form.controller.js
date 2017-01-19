@@ -1,22 +1,23 @@
 angular
-.module('admin.products')
-.controller('CategoriesFormController', CategoriesFormController);
+    .module('admin.products')
+    .controller('CategoriesFormController', CategoriesFormController);
 
 function CategoriesFormController(ProductsService, $state) {
     var ctrl = this;
 
-    ctrl.$onInit = function() {
+    ctrl.$onInit = function () {
         ctrl.isNew = (ctrl.category === undefined);
         console.log('category new component');
+
     };
 
-    ctrl.saveCategory = function() {
-        if(ctrl.isNew){
-            ProductsService.addCategory(ctrl.category).then(function(){
+    ctrl.saveCategory = function () {
+        if (ctrl.isNew) {
+            ProductsService.addCategory(ctrl.category).then(function () {
                 ctrl.back();
             });
-        } else{
-            ProductsService.saveCategory(ctrl.category).then(function(){
+        } else {
+            ProductsService.saveCategory(ctrl.category).then(function () {
                 ctrl.back();
             });
         }
@@ -27,7 +28,7 @@ function CategoriesFormController(ProductsService, $state) {
         ctrl.back();
     };
 
-    ctrl.back = function() {
+    ctrl.back = function () {
         $state.go('admin.products.list');
     };
 }

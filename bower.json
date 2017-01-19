@@ -1,5 +1,5 @@
 {
-  "name": "Vitrine Primavera",
+  "name": "vitrine-primavera",
   "description": "online display for Primavera Confecções products",
   "version": "0.0.1",
   "homepage": "https://github.com/angular/angular-seed",
@@ -13,6 +13,6 @@
     "angular-animate": "1.6.1",
     "angular-messages": "1.6.1",
     "angular-aria": "1.6.1",
-    "angular-material": "1.1.0"
+    "angular-material": "1.1.1"
   }
 }

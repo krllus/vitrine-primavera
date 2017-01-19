@@ -1,7 +1,7 @@
 angular
-.module('admin.products')
-.component('productsForm', ProductsFormComponent())
-.config(ProductsFormConfig);
+    .module('admin.products')
+    .component('productsForm', ProductsFormComponent())
+    .config(ProductsFormConfig);
 
 function ProductsFormComponent() {
     return {
@@ -16,27 +16,27 @@ function ProductsFormComponent() {
 
 function ProductsFormConfig($stateProvider) {
     $stateProvider
-    .state({
-        name: 'admin.products.newProduct',
-        url: '/novo-produto',
-        component: 'productsForm',
-        resolve:{
-            categories: function (ProductsService) {
-                return ProductsService.fetchCategories();
+        .state({
+            name: 'admin.products.newProduct',
+            url: '/novo-produto',
+            component: 'productsForm',
+            resolve: {
+                categories: function (ProductsService) {
+                    return ProductsService.fetchCategories();
+                }
             }
-        }
-    })
-    .state({
-        name: 'admin.products.editProduct',
-        url: '/editar-produto/:id',
-        component: 'productsForm',
-        resolve: {
-            categories: function (ProductsService) {
-                return ProductsService.fetchCategories();
-            },
-            product: function($transition$, ProductsService){
-                return ProductsService.fetchProduct($transition$.params().id);
+        })
+        .state({
+            name: 'admin.products.editProduct',
+            url: '/editar-produto/:id',
+            component: 'productsForm',
+            resolve: {
+                categories: function (ProductsService) {
+                    return ProductsService.fetchCategories();
+                },
+                product: function ($transition$, ProductsService) {
+                    return ProductsService.fetchProduct($transition$.params().id);
+                }
             }
-        }
-    });
+        });
 }

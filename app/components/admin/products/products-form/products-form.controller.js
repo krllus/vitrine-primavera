@@ -1,30 +1,28 @@
 angular
-.module('admin.products')
-.controller('ProductFormController', ProductFormController);
+    .module('admin.products')
+    .controller('ProductFormController', ProductFormController);
 
 function ProductFormController(ProductsService, $state) {
     var ctrl = this;
 
-    ctrl.$onInit = function() {
+    ctrl.$onInit = function () {
 
         ctrl.isNew = (ctrl.product === undefined);
-        if(ctrl.isNew){
+        if (ctrl.isNew) {
             console.log('product new component');
-        }else{
-            ctrl.oldCategoryId = ctrl.product.catId;
+        } else {
+            ctrl.oldCategoryId = ctrl.product.categoryId;
             console.log('product edit component');
         }
     };
 
-    console.log(ctrl.product);
-
-    ctrl.saveProduct = function() {
-        if(ctrl.isNew){
-            ProductsService.addProduct(ctrl.product).then(function(){
+    ctrl.saveProduct = function () {
+        if (ctrl.isNew) {
+            ProductsService.addProduct(ctrl.product).then(function () {
                 ctrl.back();
             });
-        } else{
-            ProductsService.saveProduct(ctrl.product, ctrl.oldCategoryId).then(function(){
+        } else {
+            ProductsService.saveProduct(ctrl.product, ctrl.oldCategoryId).then(function () {
                 ctrl.back();
             });
         }
@@ -35,7 +33,7 @@ function ProductFormController(ProductsService, $state) {
         ctrl.back();
     };
 
-    ctrl.back = function() {
+    ctrl.back = function () {
         $state.go('admin.products.list');
     };
 }

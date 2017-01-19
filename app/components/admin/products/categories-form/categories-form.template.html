@@ -1,4 +1,4 @@
-<div layout="column" class="md-inline-form" >
+<div layout="column" class="md-inline-form">
     <md-content layout-padding>
         <div>
             <form name="userForm" novalidate>
@@ -16,16 +16,17 @@
                             ng-model="$ctrl.category.desc"
                             md-maxlength="150"
                             rows="3"
-                            required
                             md-select-on-focus></textarea>
                 </md-input-container>
 
                 <div layout="row" layout-align="end">
                     <md-button
                             ng-disabled="userForm.$invalid"
-                            ng-click="$ctrl.saveCategory()">Salvar</md-button>
+                            ng-click="$ctrl.saveCategory()">Salvar
+                    </md-button>
                     <md-button
-                            ng-click="$ctrl.cancel()">Cancelar</md-button>
+                            ng-click="$ctrl.cancel()">Cancelar
+                    </md-button>
                 </div>
             </form>
         </div>

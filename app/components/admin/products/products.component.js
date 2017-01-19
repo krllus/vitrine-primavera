@@ -1,7 +1,7 @@
 angular
-.module('admin.products')
-.component('products', ProductsComponent())
-.config(ProductsConfig);
+    .module('admin.products')
+    .component('products', ProductsComponent())
+    .config(ProductsConfig);
 
 function ProductsComponent() {
     return {

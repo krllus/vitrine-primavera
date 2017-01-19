@@ -1,2 +1,2 @@
 angular
-.module('admin.products',[]);
+    .module('admin.products', []);
