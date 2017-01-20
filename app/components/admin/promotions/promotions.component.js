@@ -1,21 +1,21 @@
 angular
-.module('admin.promotions')
-.config(PromotionsConfig)
-.controller('PromotionsController', PromotionsController)
-.component('promotions', {
-    templateUrl:'components/admin/promotions/promotions.template.html',
-    controller: 'PromotionsController'
-});
+    .module('admin.promotions')
+    .component('promotions', PromotionsComponent())
+    .config(PromotionsConfig);
 
-function PromotionsController($firebaseObject, $firebaseArray){
-    var ctrl = this;
-    ctrl.$onInit = function(){
-        console.log('promotions component');
-    }
+function PromotionsComponent() {
+    return {
+        template: '<ui-view autoscroll></ui-view>'
+    };
 }
 
-function PromotionsConfig($stateProvider) {
+function PromotionsConfig($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.when("/admin/promoções", "/admin/promoções/lista");
+    $urlRouterProvider.when("admin.promotions", "/admin/promoções/lista");
+
     var state = {
+        abstract: true,
         name: 'admin.promotions',
         url: '/promoções',
         component: 'promotions'

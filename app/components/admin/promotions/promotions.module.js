@@ -1,1 +1,2 @@
-angular.module('admin.promotions',[]);
+angular
+    .module('admin.promotions',[]);
