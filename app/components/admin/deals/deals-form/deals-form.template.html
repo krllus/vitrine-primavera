@@ -4,7 +4,7 @@
             <form name="userForm" novalidate>
                 <md-input-container class="md-block">
                     <label>Nome</label>
-                    <input type="text" name="name" ng-model="$ctrl.promotion.name" required>
+                    <input type="text" name="name" ng-model="$ctrl.deal.name" required>
 
                 </md-input-container>
 
@@ -16,7 +16,7 @@
                 <md-input-container class="md-block">
                     <label>Descrição</label>
                     <textarea
-                            ng-model="$ctrl.promotion.description"
+                            ng-model="$ctrl.deal.description"
                             md-maxlength="150"
                             rows="3"
                             required
@@ -26,7 +26,7 @@
                 <div layout="row" layout-align="end">
                     <md-button
                             ng-disabled="userForm.$invalid"
-                            ng-click="$ctrl.savePromotion()">Salvar</md-button>
+                            ng-click="$ctrl.saveDeal()">Salvar</md-button>
                     <md-button
                             ng-click="$ctrl.cancel()">Cancelar</md-button>
                 </div>

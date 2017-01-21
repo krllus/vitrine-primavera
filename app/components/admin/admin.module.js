@@ -3,7 +3,7 @@ angular.module('admin',[
     'admin.company',
     'admin.notifications',
     'admin.products',
-    'admin.promotions',
+    'admin.deals',
     'admin.reports',
     'admin.showcase'
 ]);

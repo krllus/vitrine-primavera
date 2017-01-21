@@ -23,33 +23,17 @@
 
 
     <!-- Produtos-->
-    <div class="ext-content" ng-show="$ctrl.currentNavItem=='products'">
+    <div class="ext-content" ng-show="$ctrl.currentNavItem=='deals'">
         <md-content>
             <md-list flex>
                 <md-list-item
-                        ng-click="$ctrl.editProduct(product.$id)"
+                        ng-click="$ctrl.editDeal(deal.$id)"
                         class="md-2-line"
-                        ng-repeat="product in $ctrl.products | filter:$ctrl.filter">
+                        ng-repeat="deal in $ctrl.deals | filter:$ctrl.filter">
                     <div class="md-list-item-text">
-                        <h3>{{product.name}}</h3>
+                        <h3>{{deal.name}}</h3>
+                        <!--TODO add second line, short description -->
                     </div>
-                </md-list-item>
-            </md-list>
-        </md-content>
-    </div>
-
-    <!-- Categorias -->
-    <div class="ext-content" ng-show="$ctrl.currentNavItem=='categories'">
-        <md-content>
-            <md-list flex>
-                <md-list-item
-                        ng-click="$ctrl.editCategory(category.$id)"
-                        class="md-2-line"
-                        ng-repeat="category in $ctrl.categories | filter:$ctrl.filter">
-                    <div class="md-list-item-text">
-                        <h3>{{category.name}}</h3>
-                    </div>
-                    <!-- <md-button class="md-secondary" ng-click="$ctrl.removeCategory(category)">Excluir</md-button>-->
                 </md-list-item>
             </md-list>
         </md-content>
